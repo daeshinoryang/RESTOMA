@@ -443,3 +443,9 @@ nav a {
     transform: scale(1);
   }
 }
+.secondary {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
