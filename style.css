@@ -355,12 +355,18 @@ nav a {
 .logo a:hover {
   opacity: 0.8;
 }
-.logo img {
-  height: 70px;
-  width: auto;
-  display: block;
+.logo a {
+  text-decoration: none;
+  color: #c7a282;
 }
 
+.logo a:visited {
+  color: #c7a282;
+}
+
+.logo a:hover {
+  opacity: 0.8;
+}
 .logo a {
   display: inline-block;
   text-decoration: none;
