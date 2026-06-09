@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESTOMA | 서비스 소개</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">RESTOMA</div>
+
+    <nav>
+      <a href="service.html">서비스 소개</a>
+      <a href="#">향료 추천</a>
+      <a href="#">맞춤 제작</a>
+      <a href="#">향료 이야기</a>
+      <a href="#">마이페이지</a>
+    </nav>
+
+    <div class="auth">
+      <button id="loginBtn" class="login-btn">Google로 로그인</button>
+
+      <div id="userBox" class="user-box hidden">
+        <span id="userName"></span>
+        <button id="logoutBtn">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="service-hero">
+    <img src="service-hero.png" alt="RESTOMA 서비스 소개 이미지" />
+
+    <div class="service-hero-text">
+      <p>RESTOMA SERVICE</p>
+      <h1>
+        향으로 만드는<br />
+        나만의 휴식
+      </h1>
+      <span>
+        RESTOMA는 사용자의 상태와 취향을 분석하여<br />
+        세상에 단 하나뿐인 맞춤형 향료 배합을 제안합니다.
+      </span>
+    </div>
+  </section>
+
+  <section class="service-section">
+    <p class="section-label">WHY RESTOMA</p>
+    <h2>왜 RESTOMA가 필요할까요?</h2>
+
+    <div class="service-cards">
+      <div>
+        <h3>학업 스트레스</h3>
+        <p>시험과 과제, 입시 준비로 인한 불안과 스트레스를 향을 통해 완화할 수 있도록 돕습니다.</p>
+      </div>
+
+      <div>
+        <h3>업무 피로</h3>
+        <p>장시간 업무와 반복되는 일상 속에서 집중력 저하와 피로감을 관리할 수 있도록 합니다.</p>
+      </div>
+
+      <div>
+        <h3>수면 부족</h3>
+        <p>불규칙한 생활 습관으로 인한 수면의 질 저하를 향기 루틴으로 개선할 수 있도록 돕습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section">
+    <p class="section-label">PROCESS</p>
+    <h2>RESTOMA는 이렇게 작동합니다</h2>
+
+    <div class="process-grid">
+      <div>
+        <span>STEP 1</span>
+        <h3>현재 상태 분석</h3>
+        <p>간단한 설문을 통해 스트레스, 피로, 집중력, 수면 상태를 파악합니다.</p>
+      </div>
+
+      <div>
+        <span>STEP 2</span>
+        <h3>취향 분석</h3>
+        <p>선호하는 향과 피하고 싶은 향을 입력받아 개인의 취향을 분석합니다.</p>
+      </div>
+
+      <div>
+        <span>STEP 3</span>
+        <h3>향료 추천</h3>
+        <p>상태와 취향을 종합하여 어울리는 향료 조합을 추천합니다.</p>
+      </div>
+
+      <div>
+        <span>STEP 4</span>
+        <h3>맞춤 배합</h3>
+        <p>추천 결과를 바탕으로 나만의 향료 배합 방향을 확인합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section comparison">
+    <p class="section-label">DIFFERENCE</p>
+    <h2>기존 향수 추천 서비스와 무엇이 다를까요?</h2>
+
+    <div class="compare-box">
+      <div>
+        <h3>일반 향수 추천</h3>
+        <p>향 취향 중심</p>
+        <p>제품 추천 위주</p>
+        <p>일회성 추천</p>
+      </div>
+
+      <div>
+        <h3>RESTOMA</h3>
+        <p>상태 + 취향 분석</p>
+        <p>맞춤 향료 배합 추천</p>
+        <p>개인 기록 기반 관리</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
