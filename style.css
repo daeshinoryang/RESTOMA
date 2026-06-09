@@ -211,3 +211,139 @@ nav a {
 .hidden {
   display: none;
 }
+.service-hero {
+  position: relative;
+  max-width: 1400px;
+  margin: 40px auto 80px;
+  padding: 0 80px;
+}
+
+.service-hero img {
+  width: 100%;
+  height: 620px;
+  object-fit: cover;
+  border-radius: 45px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+}
+
+.service-hero-text {
+  position: absolute;
+  left: 150px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3d3028;
+}
+
+.service-hero-text p {
+  color: #c7a282;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.service-hero-text h1 {
+  font-size: 72px;
+  line-height: 1.15;
+  margin-bottom: 25px;
+}
+
+.service-hero-text span {
+  font-size: 22px;
+  line-height: 1.8;
+  color: #5f5147;
+}
+
+.service-section {
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.section-label {
+  color: #c7a282;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.service-section h2 {
+  font-size: 44px;
+  margin-bottom: 40px;
+}
+
+.service-cards,
+.process-grid,
+.compare-box {
+  display: grid;
+  gap: 25px;
+}
+
+.service-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.process-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.service-cards div,
+.process-grid div,
+.compare-box div {
+  background: rgba(255,255,255,0.75);
+  border-radius: 30px;
+  padding: 35px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+}
+
+.service-cards h3,
+.process-grid h3,
+.compare-box h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.service-cards p,
+.process-grid p,
+.compare-box p {
+  color: #6e6258;
+  line-height: 1.8;
+}
+
+.process-grid span {
+  display: inline-block;
+  color: #c7a282;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.compare-box {
+  grid-template-columns: 1fr 1fr;
+}
+
+.comparison {
+  padding-bottom: 100px;
+}
+
+@media (max-width: 900px) {
+  .service-hero {
+    padding: 0 30px;
+  }
+
+  .service-hero img {
+    height: 500px;
+  }
+
+  .service-hero-text {
+    left: 70px;
+  }
+
+  .service-hero-text h1 {
+    font-size: 48px;
+  }
+
+  .service-cards,
+  .process-grid,
+  .compare-box {
+    grid-template-columns: 1fr;
+  }
+}
