@@ -347,3 +347,11 @@ nav a {
     grid-template-columns: 1fr;
   }
 }
+.logo a {
+  text-decoration: none;
+  color: #c7a282;
+}
+
+.logo a:hover {
+  opacity: 0.8;
+}
