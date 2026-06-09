@@ -369,3 +369,71 @@ nav a {
 .logo img:hover {
   opacity: 0.8;
 }
+.service-intro {
+  position: relative;
+  max-width: 1400px;
+  height: 680px;
+  margin: 40px auto 100px;
+  padding: 0 80px;
+  overflow: hidden;
+}
+
+.intro-title {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7efe5;
+  animation: introFadeOut 1.2s ease forwards;
+  animation-delay: 1.6s;
+}
+
+.intro-title h1 {
+  font-size: 78px;
+  line-height: 1.2;
+  text-align: center;
+  color: #3d3028;
+  animation: titleMoveUp 1.2s ease forwards;
+  animation-delay: 1.2s;
+}
+
+.service-hero-image {
+  position: absolute;
+  inset: 0;
+  padding: 0 80px;
+  opacity: 0;
+  transform: scale(1.04);
+  animation: imageFadeIn 1.4s ease forwards;
+  animation-delay: 1.8s;
+}
+
+.service-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 45px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+}
+
+@keyframes introFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes titleMoveUp {
+  to {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes imageFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
