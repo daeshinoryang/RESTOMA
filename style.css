@@ -588,3 +588,150 @@ nav a {
   text-decoration: none;
   display: inline-block;
 }
+.mypage {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 40px 100px;
+}
+
+.mypage-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.mypage-title p {
+  color: #c7a282;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.mypage-title h1 {
+  font-size: 54px;
+  margin-bottom: 18px;
+}
+
+.mypage-title span {
+  color: #6e6258;
+  font-size: 20px;
+}
+
+.login-required,
+.profile-card {
+  background: rgba(255,255,255,0.78);
+  border-radius: 40px;
+  padding: 45px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+}
+
+.login-required {
+  text-align: center;
+}
+
+.login-required h2 {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.login-required p {
+  color: #6e6258;
+  margin-bottom: 30px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.profile-top img {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.profile-label {
+  color: #c7a282;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.profile-top h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.profile-top span {
+  color: #6e6258;
+  font-size: 18px;
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.profile-info-grid div {
+  background: #f7efe5;
+  border-radius: 25px;
+  padding: 25px;
+}
+
+.profile-info-grid h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.profile-info-grid p {
+  color: #6e6258;
+  word-break: break-all;
+}
+
+.mypage-summary {
+  margin-top: 35px;
+  background: #3d3028;
+  color: white;
+  border-radius: 30px;
+  padding: 35px;
+}
+
+.mypage-summary h3 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.mypage-summary p {
+  color: #e6d7c8;
+  line-height: 1.7;
+}
+
+.small-text {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.mypage-link {
+  margin-top: 25px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .profile-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mypage-title h1 {
+    font-size: 38px;
+  }
+}
