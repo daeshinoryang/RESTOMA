@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
 import {
   getAuth,
@@ -22,7 +22,7 @@ const firebaseConfig = {
   measurementId: "G-SQHDM6W1MB"
 };
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
@@ -41,21 +41,23 @@ const scentMap = {
   eucalyptus: { name: "유칼립투스", drop: 2 },
 };
 
-document.getElementById("scentForm").addEventListener("submit", async function (e) {
+const form = document.getElementById("scentForm");
+
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const form = new FormData(e.target);
+  const formData = new FormData(form);
   const blend = {};
 
   function addScent(name, drop) {
     blend[name] = (blend[name] || 0) + drop;
   }
 
-  const q1 = form.get("q1");
-  const q2 = form.get("q2");
-  const q3 = form.get("q3");
-  const q4 = form.get("q4");
-  const q5 = form.get("q5");
+  const q1 = formData.get("q1");
+  const q2 = formData.get("q2");
+  const q3 = formData.get("q3");
+  const q4 = formData.get("q4");
+  const q5 = formData.get("q5");
 
   addScent(scentMap[q1].name, 2);
 
@@ -118,27 +120,17 @@ document.getElementById("scentForm").addEventListener("submit", async function (
 
   try {
     await addDoc(collection(db, "users", currentUser.uid, "recommendations"), {
-      userId: currentUser.uid,
-      userName: currentUser.displayName || "",
-      userEmail: currentUser.email || "",
       blendName,
       blend,
       feature,
       effect,
       comment,
-      answers: {
-        q1,
-        q2,
-        q3,
-        q4,
-        q5
-      },
       createdAt: serverTimestamp()
     });
 
-    alert("추천 결과가 마이페이지에 저장되었습니다.");
+    alert("추천 결과가 저장되었습니다.");
   } catch (error) {
-    console.error("저장 오류:", error);
-    alert(`추천 결과 저장 실패: ${error.code}`);
+    console.error(error);
+    alert(`저장 실패: ${error.code}`);
   }
 });
