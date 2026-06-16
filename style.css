@@ -583,3 +583,8 @@ nav a {
     grid-template-columns: 1fr;
   }
 }
+.primary,
+.secondary {
+  text-decoration: none;
+  display: inline-block;
+}
