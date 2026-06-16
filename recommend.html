@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESTOMA | 향료 추천</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="./index.html">RESTOMA</a>
+    </div>
+
+    <nav>
+      <a href="./service.html">서비스 소개</a>
+      <a href="./recommend.html">향료 추천</a>
+      <a href="#">맞춤 제작</a>
+      <a href="#">향료 이야기</a>
+      <a href="#">마이페이지</a>
+    </nav>
+
+    <div class="auth">
+      <button id="loginBtn" class="login-btn">Google로 로그인</button>
+      <div id="userBox" class="user-box hidden">
+        <span id="userName"></span>
+        <button id="logoutBtn">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="recommend-page">
+    <section class="recommend-title">
+      <p>RESTOMA SCENT TEST</p>
+      <h1>나에게 맞는 향료 배합 찾기</h1>
+      <span>현재 상태와 사용 공간을 바탕으로 맞춤형 향료 배합을 추천합니다.</span>
+    </section>
+
+    <form id="scentForm" class="scent-form">
+      <div class="question-box">
+        <h2>Q1. 현재 나를 가장 무겁게 짓누르는 감정은?</h2>
+        <label><input type="radio" name="q1" value="lemon" required> 무기력함</label>
+        <label><input type="radio" name="q1" value="bergamot"> 신경질과 짜증</label>
+        <label><input type="radio" name="q1" value="rosemary"> 생각과 걱정이 많음</label>
+        <label><input type="radio" name="q1" value="marjoram"> 불안감</label>
+      </div>
+
+      <div class="question-box">
+        <h2>Q2. 스트레스를 받을 때 몸에 나타나는 가장 큰 변화는?</h2>
+        <label><input type="radio" name="q2" value="peppermint" required> 두통</label>
+        <label><input type="radio" name="q2" value="eucalyptus"> 현기증/어지럼증</label>
+        <label><input type="radio" name="q2" value="marjoram"> 목과 어깨 통증</label>
+        <label><input type="radio" name="q2" value="cinnamon_lemon"> 스트레스성 오한</label>
+      </div>
+
+      <div class="question-box">
+        <h2>Q3. 이 향기를 가장 자주 사용할 메인 공간은?</h2>
+        <label><input type="radio" name="q3" value="rosemary" required> 독서실 및 자습실 책상</label>
+        <label><input type="radio" name="q3" value="peppermint"> 모니터 앞</label>
+        <label><input type="radio" name="q3" value="bergamot"> 침대 속</label>
+      </div>
+
+      <div class="question-box">
+        <h2>Q4. 평소 선호하는 향의 느낌은?</h2>
+        <label><input type="radio" name="q4" value="fresh" required> 상큼하고 산뜻한 향</label>
+        <label><input type="radio" name="q4" value="wood"> 숲속처럼 편안한 향</label>
+        <label><input type="radio" name="q4" value="floral"> 꽃처럼 부드러운 향</label>
+        <label><input type="radio" name="q4" value="cool"> 깔끔하고 시원한 향</label>
+      </div>
+
+      <div class="question-box">
+        <h2>Q5. 향의 강도는 어느 정도를 선호하시나요?</h2>
+        <label><input type="radio" name="q5" value="soft" required> 은은하게</label>
+        <label><input type="radio" name="q5" value="normal"> 보통</label>
+        <label><input type="radio" name="q5" value="strong"> 진하게</label>
+      </div>
+
+      <button type="submit" class="primary submit-btn">결과 확인하기 →</button>
+    </form>
+
+    <section id="resultBox" class="result-box hidden">
+      <p class="section-label">RESTOMA RESULT</p>
+      <h2>당신만을 위한 향료 배합이 완성되었습니다.</h2>
+
+      <div class="blend-name">
+        <span>RESTOMA Blend</span>
+        <h3 id="blendName">CALM FOCUS</h3>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <h3>맞춤 향료 배합</h3>
+          <ul id="blendList"></ul>
+        </div>
+
+        <div class="result-card">
+          <h3>향 특징</h3>
+          <p id="scentFeature"></p>
+        </div>
+
+        <div class="result-card">
+          <h3>기대 효과</h3>
+          <p id="effectText"></p>
+        </div>
+
+        <div class="result-card">
+          <h3>RESTOMA 분석 코멘트</h3>
+          <p id="commentText"></p>
+        </div>
+      </div>
+
+      <button onclick="location.reload()" class="secondary retry-btn">다시 설문하기</button>
+    </section>
+  </main>
+
+  <script src="recommend.js"></script>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
