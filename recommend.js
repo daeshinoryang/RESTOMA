@@ -1,3 +1,37 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCQFbd31OEMqqofGB_zIzs7dvnwOS1G2tU",
+  authDomain: "restoma-79175.firebaseapp.com",
+  projectId: "restoma-79175",
+  storageBucket: "restoma-79175.firebasestorage.app",
+  messagingSenderId: "1046503308690",
+  appId: "1:1046503308690:web:8404d70f3d6d7ab5a3154b",
+  measurementId: "G-SQHDM6W1MB"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+});
+
 const scentMap = {
   lemon: { name: "레몬", drop: 2 },
   bergamot: { name: "베르가못", drop: 2 },
@@ -7,7 +41,7 @@ const scentMap = {
   eucalyptus: { name: "유칼립투스", drop: 2 },
 };
 
-document.getElementById("scentForm").addEventListener("submit", function (e) {
+document.getElementById("scentForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const form = new FormData(e.target);
@@ -41,15 +75,6 @@ document.getElementById("scentForm").addEventListener("submit", function (e) {
   if (q5 === "normal") strengthText = "균형 잡힌 강도의";
   if (q5 === "strong") strengthText = "선명하고 진한 강도의";
 
-  const blendList = document.getElementById("blendList");
-  blendList.innerHTML = "";
-
-  Object.entries(blend).forEach(([name, drop]) => {
-    const li = document.createElement("li");
-    li.textContent = `${name} ${drop}방울`;
-    blendList.appendChild(li);
-  });
-
   let blendName = "CALM FOCUS";
   let feature = "차분함과 집중감이 조화를 이루는 향";
   let effect = "스트레스 완화, 집중력 향상, 긴장 완화";
@@ -69,6 +94,15 @@ document.getElementById("scentForm").addEventListener("submit", function (e) {
     feature = `${strengthText} 깔끔하고 시원한 느낌의 향`;
   }
 
+  const blendList = document.getElementById("blendList");
+  blendList.innerHTML = "";
+
+  Object.entries(blend).forEach(([name, drop]) => {
+    const li = document.createElement("li");
+    li.textContent = `${name} ${drop}방울`;
+    blendList.appendChild(li);
+  });
+
   document.getElementById("blendName").textContent = blendName;
   document.getElementById("scentFeature").textContent = feature;
   document.getElementById("effectText").textContent = effect;
@@ -76,4 +110,35 @@ document.getElementById("scentForm").addEventListener("submit", function (e) {
 
   document.getElementById("resultBox").classList.remove("hidden");
   document.getElementById("resultBox").scrollIntoView({ behavior: "smooth" });
+
+  if (!currentUser) {
+    alert("로그인하면 추천 결과를 마이페이지에 저장할 수 있습니다.");
+    return;
+  }
+
+  try {
+    await addDoc(collection(db, "users", currentUser.uid, "recommendations"), {
+      userId: currentUser.uid,
+      userName: currentUser.displayName || "",
+      userEmail: currentUser.email || "",
+      blendName,
+      blend,
+      feature,
+      effect,
+      comment,
+      answers: {
+        q1,
+        q2,
+        q3,
+        q4,
+        q5
+      },
+      createdAt: serverTimestamp()
+    });
+
+    alert("추천 결과가 마이페이지에 저장되었습니다.");
+  } catch (error) {
+    console.error("저장 오류:", error);
+    alert(`추천 결과 저장 실패: ${error.code}`);
+  }
 });
